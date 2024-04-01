@@ -51,7 +51,7 @@ const ManageClasses = () => {
         axiosSecure.put(`/change-status/${id}`, { status: 'approved' })
             .then(res => {
                 console.log(res.data)
-                setClasses(classes.map(cls => cls._id == id ? { ...cls, status: 'approved' } : cls))
+                setClasses(classes.map(cls => cls._id === id ? { ...cls, status: 'approved' } : cls))
             })
             .catch(err => console.log(err))
     }

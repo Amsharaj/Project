@@ -22,7 +22,18 @@ import ManageUsers from "../pages/DashBoard/Admin/users/ManageUsers";
 import UpdateUser from "../pages/DashBoard/Admin/users/UpdateUser";
 import AdminHome from "../pages/DashBoard/Admin/AdminHome";
 import ManageClasses from "../pages/DashBoard/Admin/ManageClasses";
+import InstructorCP from "../pages/DashBoard/Instructors/InstructorCP";
+import AddClass from "../pages/DashBoard/Instructors/AddClass";
+import MyClasses from "../pages/DashBoard/Instructors/MyClasses";
+import UpdateClass from "../pages/DashBoard/Instructors/UpdateClass";
 // import Dashboard from "../pages/Dashboard/dashborad";
+import InstructorRoute from "./Privet/InstructorRoute";
+import ManageApplications from "../pages/DashBoard/Admin/Applications/ManageApplication";
+import Trending from "../layout/Trending";
+import Following from "../layout/Following";
+import PendingClass from "../pages/DashBoard/Instructors/PendingClass";
+import ApprovedClass from "../pages/DashBoard/Instructors/ApprovedClass";
+
 
 export const router = createBrowserRouter([
   {
@@ -49,81 +60,102 @@ export const router = createBrowserRouter([
       },
       {
         path: "class/:id",
-        element: <SingleClass/>,
+        element: <SingleClass />,
         loader: ({ params }) => fetch(`http://localhost:5000/class/${params.id}`),
-    }
+      }
     ]
   },
   {
     path: '/dashboard',
-        element: <DashboardLayout />,
-        errorElement: <ErrorPage />,
-    children:[
+    element: <DashboardLayout />,
+    errorElement: <ErrorPage />,
+    children: [
       {
-          index: true,
-          element: <PrivetRoute><Dashboard /></PrivetRoute>
+        index: true,
+        element: <PrivetRoute><Dashboard /></PrivetRoute>
       },
       // // * ADMIN ROUTES
       {
-          path: 'manage-users',
-          element: <AdminRoute><ManageUsers /></AdminRoute>
+        path: 'manage-users',
+        element: <AdminRoute><ManageUsers /></AdminRoute>
       },
       {
-          path: 'update-user/:id',
-          element: <AdminRoute><UpdateUser /></AdminRoute>,
-          loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`),
+        path: 'update-user/:id',
+        element: <AdminRoute><UpdateUser /></AdminRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`),
       },
       {
-          path: 'admin-home',
-          element: <AdminRoute><AdminHome /></AdminRoute>
+        path: 'admin-home',
+        element: <AdminRoute><AdminHome /></AdminRoute>
       },
       {
-          path: 'manage-class',
-          element: <AdminRoute><ManageClasses /></AdminRoute>
+        path: 'manage-class',
+        element: <AdminRoute><ManageClasses /></AdminRoute>
+      },
+      {
+        path: 'manage-applications',
+        element: <AdminRoute><ManageApplications /></AdminRoute>
       },
       // * INSTRUCTOR ROUTES
-      // {
-      //     path: 'instructor-cp',
-      //     element: <InstructorRoute><InstructorCP /></InstructorRoute>
-      // },
-      // {
-      //     path: 'add-class',
-      //     element: <InstructorRoute><AddClass /></InstructorRoute>
-      // },
-      // {
-      //     path: 'my-classes',
-      //     element: <InstructorRoute><MyClasses /></InstructorRoute>
-      // },
-      // {
-      //     path: 'update/:id',
-      //     element: <InstructorRoute><UpdateClass /></InstructorRoute>,
-      //     loader: ({ params }) => fetch(`http://localhost:5000/class/${params.id}`),
-      // },
+      {
+        path: 'instructor-cp',
+        element: <InstructorRoute><InstructorCP /></InstructorRoute>
+      },
+      {
+        path: 'add-class',
+        element: <InstructorRoute><AddClass /></InstructorRoute>
+      },
+      {
+        path: 'my-classes',
+        element: <InstructorRoute><MyClasses /></InstructorRoute>
+      },
+      {
+        path: 'update/:id',
+        element: <InstructorRoute><UpdateClass /></InstructorRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/class/${params.id}`),
+      },
+      {
+        path: 'my-pending',
+        element: <InstructorRoute><PendingClass /></InstructorRoute>
+        
+      },
+      {
+        path: 'my-approved',
+        element: <InstructorRoute><ApprovedClass /></InstructorRoute>
+      },
       // * STUDENT ROUTES
       {
-          path: 'student-cp',
-          element: <StudentRoute><StudentCP /></StudentRoute>
+        path: 'student-cp',
+        element: <StudentRoute><StudentCP /></StudentRoute>
       },
       {
-          path: 'my-selected',
-          element: <StudentRoute><SelectedClass /></StudentRoute>
+        path: 'my-selected',
+        element: <StudentRoute><SelectedClass /></StudentRoute>
       },
       {
-          path: 'user/payment',
-          element: <StudentRoute><Payment /></StudentRoute>
+        path: 'user/payment',
+        element: <StudentRoute><Payment /></StudentRoute>
       },
       {
-          path: 'my-payments',
-          element: <StudentRoute><MyPaymentHistory /></StudentRoute>
+        path: 'my-payments',
+        element: <StudentRoute><MyPaymentHistory /></StudentRoute>
       },
       {
-          path: 'apply-instructor',
-          element: <StudentRoute><AsInstructor /></StudentRoute>
+        path: 'apply-instructor',
+        element: <StudentRoute><AsInstructor /></StudentRoute>
       },
       {
-          path: 'enrolled-class',
-          element: <StudentRoute><EnrolledClasses /></StudentRoute>
+        path: 'enrolled-class',
+        element: <StudentRoute><EnrolledClasses /></StudentRoute>
       }
-  ]  
+    ]
+  },
+  {
+    path: '/trending',
+    element: <Trending />
+  },
+  {
+    path: '/following',
+    element: <Following />
   }
 ])

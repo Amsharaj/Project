@@ -208,6 +208,14 @@ async function run() {
       res.send(result);
     })
 
+    // app.get('/instructors/:email', async (req, res) => {
+    //   const query = { status: 'approved' };
+    //   const result = await userCollection.find(query).toArray();
+    //   res.send(result);
+    // })
+
+
+
     // Get single class by id
     app.get('/class/:id', async (req, res) => {
       const id = req.params.id;
@@ -467,7 +475,7 @@ async function run() {
     })
 
     // Applied route 
-    app.post('/all-instructor', async (req, res) => {
+    app.post('/as-instructor', async (req, res) => {
       const data = req.body;
       const result = await appliedCollection.insertOne(data);
       res.send(result);
@@ -477,6 +485,20 @@ async function run() {
       const result = await appliedCollection.findOne({ email });
       res.send(result);
     });
+
+
+    //Application manage
+    app.get('/manage-applications',async(req,res)=>{
+      const result = await appliedCollection.find().toArray();
+      res.send(result);
+    })
+
+    app.delete('/delete-application/:id',verifyJWT,verifyAdmin, async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await appliedCollection.deleteOne(query);
+      res.send(result);
+  })
 
 
     // Send a ping to confirm a successful connection

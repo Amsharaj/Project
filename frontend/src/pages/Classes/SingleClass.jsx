@@ -281,7 +281,7 @@ const SingleClass = () => {
                                                 className=" block w-full h-full object-cover rounded "
                                             />
                                             <div className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                                                <img src="/play.png" alt="" />
+                                                <img src="/play.png" alt="" onClick={() => window.location.href = course.videoLink}/>
                                             </div>
                                         </a>
                                         <h3>₹{course.price}</h3>

@@ -25,11 +25,12 @@ const Instructors = () => {
 
             {
                 instructors ? <>
-                    <div className='grid mb-28 md:grid-cols-2 lg:grid-cols-3 w-[90%] gap-4 mx-auto mt-20'>
+                    <div className='grid mb-28 md:grid-cols-2 lg:grid-cols-3 w-[80%] gap-9 mx-auto mt-20'>
                         {
-                            instructors ?.slice(0,4).map((instructor, i) => (
-                                <div className='flex dark:text-white hover:-translate-y-2 duration-200 cursor-pointer flex-col shadow-md py-8 px-10 md:px-8 rounded-md'>
-                                    <div className='flex-col flex gap-6 md:gap-8'>
+                            instructors ?.map((instructor, i) => (
+                                <div className='flex dark:text-white hover:-translate-y-2 duration-150 hover:ring-[2px] hover:ring-secondary
+                                cursor-pointer flex-col shadow-md py-8 px-10 md:px-8 rounded-md'>
+                                    <div className='flex-col flex gap-8 md:gap-8'>
                                         <img className='rounded-full border-4 border-gray-300 h-24 w-24 mx-auto' 
                                         src={instructor?.photoUrl || `${img}`} alt="" />
                                         <div className='flex flex-col text-center'>

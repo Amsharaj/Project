@@ -30,8 +30,9 @@ const Classes = () => {
   //handle add to cart
   const handleCart = (id) => {
     axiosSecure.get(`/enrolled-classes/${currentUser?.email}`)
-      .then(res => setEnrolledClasses(res.data)).catch(err => console.log(err))
-    console.log(id)
+      .then(res => setEnrolledClasses(res.data))
+      .catch(err => console.log(err))
+    // console.log(id)
 
     if (!currentUser) {
       return toast.error("!!..Please Login First..!!")
@@ -45,19 +46,20 @@ const Classes = () => {
         } else {
           const data = {
             classId: id,
-            usermail: currentUser?.email,
-            data: new Date()
+            usermail: currentUser.email,
+            date: new Date()
           }
           toast.promise(
             axiosSecure.post('/add-to-cart', data)
             .then(res => {
               console.log(res.data)
-              return res.data
+              // return res.data
             })
-            .catch(error => {
-              console.error("Error adding item to cart:", error);
-              throw error; 
-            }), {
+            // .catch(error => {
+            //   console.error("Error adding item to cart:", error);
+            //   throw error; 
+            // })
+            , {
             pending: 'Selecting ...',
             success: {
               render({ data }) {

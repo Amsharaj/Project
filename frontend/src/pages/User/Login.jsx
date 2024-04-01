@@ -21,7 +21,7 @@ const Login = () => {
     const formData = Object.fromEntries(data)
     // console.log(formData)
     login(formData.email, formData.password).then(() => {
-      alert("login successfully")
+      // alert("login successfully")
       navigate(location.state?.from || '/dashboard')
     }).catch((err) => {
       setError(err.code);

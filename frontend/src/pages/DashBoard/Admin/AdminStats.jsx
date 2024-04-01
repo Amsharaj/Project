@@ -6,7 +6,7 @@ const AdminStats = ({ users }) => {
   console.log("🚀 ~ file: AdminStats.jsx:6 ~ AdminStats ~ data:", data)
   const axiosSecure = useAxiosSecure();
   useEffect(()=>{
-    axiosSecure.get('/admin-stats')
+    axiosSecure.get('/admin-status')
     .then(res => { 
       setData(res.data)
     })

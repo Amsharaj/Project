@@ -85,7 +85,7 @@ const CheckoutPayment = ({ price , cartItm }) => {
             if (paymentIntent.status === 'succeeded') {
                 const transactionId = paymentIntent.id;
                 const paymentMethod = paymentIntent.payment_method;
-                const amount = paymentIntent.amount / 100;
+                const amount = paymentIntent.amount;
                 const currency = paymentIntent.currency;
                 const paymentStatus = paymentIntent.status;
                 const userName = currentUser.name;
@@ -133,8 +133,9 @@ const CheckoutPayment = ({ price , cartItm }) => {
         <>
             <div className="text-center">
                 <h1 className="text-2xl font-bold">Payment Amount : <span className='text-secondary'>₹{price}</span></h1>
-            </div>
+            
             <form onSubmit={handleSubmit}>
+                
                 <CardElement
                     options={{
                         style: {
@@ -157,6 +158,7 @@ const CheckoutPayment = ({ price , cartItm }) => {
                 {message && <p className="text-red-500">{message}</p>}
                 {succeeded && <p className="text-green-500">{succeeded}</p>}
             </form>
+            </div>
         </>
     );
 };
