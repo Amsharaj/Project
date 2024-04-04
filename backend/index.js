@@ -147,6 +147,27 @@ async function run() {
       res.send(result);
   })
 
+//   app.put('/update-user/:email',verifyJWT,verifyAdmin, async (req, res) => {
+//     const email = req.params.email;
+//     const updatedUser = req.body;
+//     const filter = { email: new ObjectId(email) };
+//     const options = { upsert: true };
+//     const updateDoc = {
+//         $set: {
+//             name: updatedUser.name,
+//             email: updatedUser.email,
+//             role: updatedUser.option,
+//             address: updatedUser.address,
+//             phone: updatedUser.phone,
+//             about: updatedUser.about,
+//             photoUrl: updatedUser.photoUrl,
+//             skills: updatedUser.skills ? updatedUser.skills : null,
+//         }
+//     }
+//     const result = await userCollection.updateOne(filter, updateDoc, options);
+//     res.send(result);
+// })
+
 
 
     //------------------------------------CLASSES ROUTES----------------------------------------------//

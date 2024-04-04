@@ -33,6 +33,7 @@ import Trending from "../layout/Trending";
 import Following from "../layout/Following";
 import PendingClass from "../pages/DashBoard/Instructors/PendingClass";
 import ApprovedClass from "../pages/DashBoard/Instructors/ApprovedClass";
+// import UpdateUserEmail from "../pages/DashBoard/Admin/users/UpdateUserEmail";
 
 
 export const router = createBrowserRouter([
@@ -84,6 +85,11 @@ export const router = createBrowserRouter([
         element: <AdminRoute><UpdateUser /></AdminRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`),
       },
+      // {
+      //   path: 'update-user/:email',
+      //   element: <AdminRoute><UpdateUserEmail /></AdminRoute>,
+      //   loader: ({ params }) => fetch(`http://localhost:5000/user/${params.email}`),
+      // },
       {
         path: 'admin-home',
         element: <AdminRoute><AdminHome /></AdminRoute>

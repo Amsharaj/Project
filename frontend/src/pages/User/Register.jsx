@@ -18,7 +18,6 @@ const Register = () => {
         register,
         handleSubmit,
         watch,
-
         formState: { errors },
     } = useForm()
 
