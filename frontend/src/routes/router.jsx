@@ -85,11 +85,6 @@ export const router = createBrowserRouter([
         element: <AdminRoute><UpdateUser /></AdminRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`),
       },
-      // {
-      //   path: 'update-user/:email',
-      //   element: <AdminRoute><UpdateUserEmail /></AdminRoute>,
-      //   loader: ({ params }) => fetch(`http://localhost:5000/user/${params.email}`),
-      // },
       {
         path: 'admin-home',
         element: <AdminRoute><AdminHome /></AdminRoute>
